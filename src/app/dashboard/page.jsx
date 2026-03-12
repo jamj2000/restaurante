@@ -23,6 +23,15 @@ async function Dashboard() {
       }
 
 
+      {isAdminSession &&
+        <>
+          <h1 className="text-xl font-bold mt-15">Lista de usuarios</h1>
+          <Suspense fallback={<Spinner1 />}>
+            <ListaUsuarios session={session} promesaUsuarios={obtenerUsuarios()} />
+          </Suspense>
+        </>
+      }
+
 
 
 
