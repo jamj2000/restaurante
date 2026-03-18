@@ -1,10 +1,16 @@
 import { auth } from "@/auth";
 import { logout } from "@/lib/actions";
+import { obtenerUsuarios } from "@/lib/data/users";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
+import ListaUsuarios from "@/components/users/lista";
+
 
 async function Dashboard() {
   const sesion = await auth();
   if (!sesion) redirect("/auth/login");
+
+  const isAdminSession = sesion.user?.role == 'ADMIN'
 
   return (
     <div className="p-4 md:p-10">
@@ -24,12 +30,12 @@ async function Dashboard() {
 
 
       {isAdminSession &&
-        <>
+        <div className="mt-6">
           <h1 className="text-xl font-bold mt-15">Lista de usuarios</h1>
-          <Suspense fallback={<Spinner1 />}>
-            <ListaUsuarios session={session} promesaUsuarios={obtenerUsuarios()} />
+          <Suspense fallback={"cargando ..."}>
+            <ListaUsuarios session={sesion} promesaUsuarios={obtenerUsuarios()} />
           </Suspense>
-        </>
+        </div>
       }
 
 

@@ -1,6 +1,6 @@
 'use client'
 
-import Modal from '@/components/ui/modal';
+import Modal from '@/components/modal';
 import { deleteUser, editUser, newUser } from "@/lib/actions/users";
 import { use } from "react";
 import { IconoInsertar, IconoModificar, IconoEliminar } from "@/components/ui/icons";
@@ -90,7 +90,7 @@ export default ({ session, promesaUsuarios }) => {
         <div className="absolute left-10 top-4 z-50 mt-2 hidden group-hover:block bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-2xl p-4 min-w-[320px]">
 
             <div className="grid grid-cols-[60px_auto] items-center  gap-4 border border-slate-300 rounded-md p-2">
-                <img src={user.image} alt="avatar"
+                <img src={user.image || "/images/avatar-80.png"} alt="avatar"
                     className={`size-16 ${!user.active && 'grayscale opacity-30'}`} />
                 <div>
                     <p>{user.name}</p>

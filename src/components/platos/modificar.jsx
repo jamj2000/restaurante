@@ -1,8 +1,22 @@
+'use client'
 import { modificarPlato } from "@/lib/actions";
+import { useActionState, useEffect, useId } from "react";
+import { toast } from "sonner";
 
 function PlatoModificar({ plato }) {
+  const formId = useId();
+
+  const [state, action, pending] = useActionState(modificarPlato, {});
+
+  useEffect(() => {
+    if (state.success) {
+      toast.success(state.success)
+      document.getElementById(formId)?.closest("dialog")?.close();
+    }
+  }, [state]);
+
   return (
-    <form className="flex flex-col gap-4" action={modificarPlato}>
+    <form className="flex flex-col gap-4" action={action} id={formId}>
       <h1 className="text-xl text-blue-500">Modificar plato</h1>
 
       <input type="hidden" name="id" defaultValue={plato.id} />

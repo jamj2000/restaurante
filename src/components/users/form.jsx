@@ -7,7 +7,7 @@ import CheckBox from "../ui/check-box";
 import InputAvatar from "../ui/input-avatar";
 import { LoaderCircleIcon } from "lucide-react";
 import { useFormStatus } from "react-dom";
-import Estado from "@/components/pedidos/estado";
+// import Estado from "@/components/pedidos/estado";
 
 
 export default function Form({ action, isAdminSession, user, disabled = false, labelSubmit = labelDefault }) {
@@ -44,13 +44,19 @@ export default function Form({ action, isAdminSession, user, disabled = false, l
 
                     {isAdminSession
                         ?
-                        <CheckBox
-                            key={`active-${user?.active}`}  // Para actualizar VDOM al detectar cambio
-                            name={'active'}
-                            defaultChecked={user?.active == true}
-                            className={"self-center mb-4 text-sm w-fit after:content-['_Cuenta_no_activa'] has-checked:after:content-['_Cuenta_activa'] has-checked:bg-blue-200 has-checked:text-blue-800  px-2 py-1 text-gray-500"}
-                            disabled={disabled}
-                        />
+                        // <CheckBox
+                        //     key={`active-${user?.active}`}  // Para actualizar VDOM al detectar cambio
+                        //     name={'active'}
+                        //     defaultChecked={user?.active}
+                        //     className={"self-center mb-4 text-sm w-fit after:content-['_Cuenta_no_activa'] has-checked:after:content-['_Cuenta_activa'] has-checked:bg-blue-200 has-checked:text-blue-800  px-2 py-1 text-gray-500"}
+                        //     disabled={disabled}
+                        // />
+                        <span
+                            key={`active-${user?.active}`} // Para actualizar VDOM al detectar cambio
+                            className={`self-center mb-4 text-sm w-fit ${user?.active ? 'bg-blue-200 text-blue-800' : 'bg-red-200 text-red-800'} px-2 py-1 text-gray-500`}
+                        >
+                            {user?.active ? 'Cuenta activa' : 'Cuenta inactiva'}
+                        </span>
                         : <input type="hidden" name="active" defaultValue={user?.active} />
                     }
 
@@ -120,7 +126,7 @@ export default function Form({ action, isAdminSession, user, disabled = false, l
                         <select
                             key={user?.role}
                             name="role"
-                            defaultValue={user?.role}
+                            defaultValue={user?.role || 'USER'}
                             size={2}
                             className="w-full text-md px-3 py-2 rounded-lg focus:outline-none bg-gray-100"
                             disabled={disabled}
@@ -153,7 +159,7 @@ export default function Form({ action, isAdminSession, user, disabled = false, l
                                 timeZone: "Europe/Madrid",
                             })}</span>
 
-                            <Estado pedido={pedido} />
+                            {/* <Estado pedido={pedido} /> */}
                         </div>
                     )}
             </div >

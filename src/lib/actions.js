@@ -140,7 +140,7 @@ export async function eliminarPedido(prevState, formData) {
 
 // ------------------------------- PLATOS -----------------------
 
-export async function insertarPlato(formData) {
+export async function insertarPlato(prevState, formData) {
   const nombre = formData.get("nombre");
   const precio = Number(formData.get("precio"));
   const foto = formData.get("foto");
@@ -157,7 +157,7 @@ export async function insertarPlato(formData) {
   return { success: "Éxito al realizar la operación" };
 }
 
-export async function modificarPlato(formData) {
+export async function modificarPlato(prevState, formData) {
   const id = Number(formData.get("id"));
   const nombre = formData.get("nombre");
   const precio = Number(formData.get("precio"));
@@ -175,9 +175,10 @@ export async function modificarPlato(formData) {
   });
 
   revalidatePath("/platos");
+  return { success: "Éxito al realizar la operación" };
 }
 
-export async function eliminarPlato(formData) {
+export async function eliminarPlato(prevState, formData) {
   const id = Number(formData.get("id"));
 
   await prisma.plato.delete({
@@ -187,6 +188,7 @@ export async function eliminarPlato(formData) {
   });
 
   revalidatePath("/platos");
+  return { success: "Éxito al realizar la operación" };
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -233,6 +235,13 @@ export async function login(prevState, formData) {
   if (!user) {
     return {
       error: "Usuario no registrado.",
+      fields: Object.fromEntries(formData.entries()),
+    };
+  }
+
+  if (!user.active) {
+    return {
+      error: "Usuario no activo. Contacte con el administrador.",
       fields: Object.fromEntries(formData.entries()),
     };
   }

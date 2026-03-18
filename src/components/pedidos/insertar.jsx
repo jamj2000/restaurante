@@ -1,6 +1,7 @@
 "use client";
 import { insertarPedido } from "@/lib/actions";
 import { useActionState, useEffect, useId } from "react";
+import { toast } from "sonner";
 
 function PedidoInsertar({ repartidores, platos, user }) {
   const formId = useId();
@@ -9,7 +10,7 @@ function PedidoInsertar({ repartidores, platos, user }) {
 
   useEffect(() => {
     if (state.success) {
-      // toast.success(state.success)
+      toast.success(state.success)
       document.getElementById(formId)?.closest("dialog")?.close();
     }
   }, [state]);

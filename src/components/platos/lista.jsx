@@ -37,7 +37,7 @@ export default async function Platos() {
               </Link>
               <p>{plato.precio} €</p>
               <p>
-                <img width={300} src={plato.foto} />
+                <img width={300} src={plato.foto || '/images/default.jpg'} />
               </p>
 
               {sesion && sesion?.user?.role === "ADMIN" && (

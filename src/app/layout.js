@@ -2,6 +2,8 @@ import "@/app/globals.css";
 
 import { Inter } from "next/font/google";
 import Header from "@/components/header";
+import { Toaster } from "sonner";
+import Menu from "@/components/menu";
 
 export const metadata = {
   title: "Restaurante Joselu",
@@ -16,7 +18,11 @@ export default function RootLayout({ children }) {
         className={`antialiased min-h-screen bg-[url(/images/fondo.jpg)] bg-cover bg-bottom-left bg-fixed`}
       >
         <Header />
-        {children}
+        <Menu />
+        <div className="pt-40">
+          {children}
+        </div>
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   );

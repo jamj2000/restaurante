@@ -39,7 +39,7 @@ async function newUser(prevState, formData) {
         revalidatePath('/dashboard')
         return { success: 'Usuario guardado' }
     } catch (error) {
-        return { error }
+        return { error: error.message.split('\n').pop() }
     }
 
 }
@@ -80,7 +80,7 @@ async function editUser(prevState, formData) {
         revalidatePath('/dashboard')
         return { success: 'Usuario modificado' }
     } catch (error) {
-        return { error }
+        return { error: 'Error al modificar el usuario' }
     }
 
 }
@@ -110,7 +110,7 @@ async function deleteUser(user) {
         revalidatePath('/dashboard')
         return { success: 'Usuario eliminado' }
     } catch (error) {
-        return { error }
+        return { error: 'Error al eliminar el usuario' }
     }
 
 }
