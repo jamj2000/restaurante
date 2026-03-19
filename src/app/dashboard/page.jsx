@@ -107,7 +107,7 @@ function UserPedidos({ isAdminSession, promesaPedidos }) {
     .map(pedido =>
       <div key={pedido.id} className="p-2 flex  justify-between items-center gap-4 rounded-full even:bg-blue-100 odd:bg-slate-100 hover:outline hover:outline-slate-400">
         <div className="relative group font-mono grid grid-cols-[40px_60px_auto] items-center">
-          <img src={pedido.user.image} alt="avatar" className="size-8" />
+          <img src={pedido.user?.image || "/images/avatar-80.png"} alt="avatar" className="size-8" />
 
           <span>{pedido.id.toString().padStart(4, '_')}</span>
           <span>{pedido.fecha_hora.toLocaleDateString("es-ES", {
@@ -136,11 +136,11 @@ const Popover = ({ pedido }) =>
     </div>
 
     <div className="grid grid-cols-[60px_auto] gap-4 mt-4 border border-slate-300 rounded-md p-2">
-      <img src={pedido.user.image} alt="" className="size-14" />
+      <img src={pedido.user?.image} alt="" className="size-14" />
       <div>
-        <p>Cliente: {pedido.user.name}</p>
-        <p>Dirección: {pedido.user.address}</p>
-        <p>Teléfono: {pedido.user.phone}</p>
+        <p>Cliente: {pedido.user?.name}</p>
+        <p>Dirección: {pedido.user?.address}</p>
+        <p>Teléfono: {pedido.user?.phone}</p>
       </div>
     </div>
 

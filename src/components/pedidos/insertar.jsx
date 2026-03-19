@@ -60,8 +60,11 @@ function PedidoInsertar({ repartidores, platos, user }) {
         </label>
       ))}
 
-      <button className="p-2 rounded-lg bg-green-500 text-white cursor-pointer">
-        Insertar pedido
+      <button
+        disabled={pending}
+        className="p-2 rounded-lg bg-green-500 text-white cursor-pointer disabled:bg-gray-500 disabled:cursor-default"
+      >
+        {pending ? "En proceso..." : "Insertar pedido"}
       </button>
     </form>
   );

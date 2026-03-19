@@ -4,9 +4,8 @@ import authConfig from "./auth.config";
 const { auth } = NextAuth(authConfig);
 
 export default auth(
-  //(request) => {
-  function middleware(request) {
-    console.log(`MIDDLEWARWE`, request.nextUrl.pathname, request.auth);
+  (request) => {
+    console.log(`PROXY`, request.nextUrl.pathname, request.auth);
 
     if (!request.auth) {
       const callbackUrl = request.nextUrl.pathname + request.nextUrl.search;

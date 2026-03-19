@@ -42,7 +42,7 @@ function PlatoModificar({ plato }) {
         <input name="foto" defaultValue={plato.foto} />
       </label>
 
-      <button className="p-2 rounded-lg bg-yellow-400 text-white cursor-pointer">
+      <button className="p-2 rounded-lg bg-orange-400 text-white cursor-pointer">
         Modificar
       </button>
     </form>

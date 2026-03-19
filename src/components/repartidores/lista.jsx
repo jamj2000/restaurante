@@ -28,7 +28,7 @@ export default async function Repartidores() {
                                 </Link>
                                 <p>Teléfono: {repartidor.telefono}</p>
 
-                                <Modal openElement={<span className="p-2 rounded-lg bg-yellow-400 text-white cursor-pointer">Modificar</span>}>
+                                <Modal openElement={<span className="p-2 rounded-lg bg-orange-400 text-white cursor-pointer">Modificar</span>}>
                                     <RepartidorModificar repartidor={repartidor} />
                                 </Modal>
 
