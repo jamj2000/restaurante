@@ -259,7 +259,7 @@ export async function login(prevState, formData) {
     await signIn("credentials", {
       email,
       password,
-      redirectTo: globalThis.callbackUrl,
+      redirectTo: globalThis.callbackUrl || "/dashboard",
     });
     return { success: "Inicio de sesión correcto" };
   } else {

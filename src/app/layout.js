@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       >
         <Header />
         <Menu />
-        <div className="pt-40">
+        <div className="pt-32">
           {children}
         </div>
         <Toaster position="top-right" richColors />

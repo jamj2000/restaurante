@@ -26,7 +26,7 @@ export default async function Menu() {
                 <Link
                     key={href}
                     href={href}
-                    className="block text-md font-bold bg-blue-500/20 px-2 py-1 rounded-lg"
+                    className="block text-md font-bold bg-blue-300/80 px-2 py-1 rounded-lg"
                 >
                     {label}
                 </Link>

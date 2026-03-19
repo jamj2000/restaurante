@@ -42,23 +42,13 @@ export default function Form({ action, isAdminSession, user, disabled = false, l
                         : < InputAvatar name='image' user={user} />
                     }
 
-                    {isAdminSession
-                        ?
-                        // <CheckBox
-                        //     key={`active-${user?.active}`}  // Para actualizar VDOM al detectar cambio
-                        //     name={'active'}
-                        //     defaultChecked={user?.active}
-                        //     className={"self-center mb-4 text-sm w-fit after:content-['_Cuenta_no_activa'] has-checked:after:content-['_Cuenta_activa'] has-checked:bg-blue-200 has-checked:text-blue-800  px-2 py-1 text-gray-500"}
-                        //     disabled={disabled}
-                        // />
-                        <span
-                            key={`active-${user?.active}`} // Para actualizar VDOM al detectar cambio
-                            className={`self-center mb-4 text-sm w-fit ${user?.active ? 'bg-blue-200 text-blue-800' : 'bg-red-200 text-red-800'} px-2 py-1 text-gray-500`}
-                        >
-                            {user?.active ? 'Cuenta activa' : 'Cuenta inactiva'}
-                        </span>
-                        : <input type="hidden" name="active" defaultValue={user?.active} />
-                    }
+                    <span
+                        key={`active-${user?.active}`} // Para actualizar VDOM al detectar cambio
+                        className={`self-center mb-4 text-sm w-fit ${user?.active ? 'bg-blue-200 text-blue-800' : 'bg-red-200 text-red-800'} px-2 py-1 text-gray-500`}
+                    >
+                        {user?.active ? 'Cuenta activa' : 'Cuenta inactiva'}
+                    </span>
+                    <input type="hidden" name="active" defaultValue={user?.active} />
 
                 </div>
 
